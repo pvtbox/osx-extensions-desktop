@@ -1,0 +1,720 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8924888223B4CDED0055B5CD /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8924888123B4CDED0055B5CD /* icon.icns */; };
+		8924888523B4CDED0055B5CD /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924888423B4CDED0055B5CD /* ShareViewController.m */; };
+		8924888A23B4CDED0055B5CD /* PvtboxShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8924887F23B4CDED0055B5CD /* PvtboxShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8924888F23B5093A0055B5CD /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BA49A1F34626100D3D8B0 /* SocketRocket.framework */; };
+		8924889023B5093A0055B5CD /* SocketRocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 894BA49A1F34626100D3D8B0 /* SocketRocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		89438B2A1F36384B00701140 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 89749EAD1F35D46600734E0E /* Scripts */; };
+		89438B2B1F36387200701140 /* applet.rsrc in Resources */ = {isa = PBXBuildFile; fileRef = 89438B281F36379C00701140 /* applet.rsrc */; };
+		894BA4571F32170400D3D8B0 /* default.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 894BA4561F32170400D3D8B0 /* default.iconset */; };
+		894BA4581F32170400D3D8B0 /* default.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 894BA4561F32170400D3D8B0 /* default.iconset */; };
+		894BA49B1F34626100D3D8B0 /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BA49A1F34626100D3D8B0 /* SocketRocket.framework */; };
+		894BA49D1F34677E00D3D8B0 /* SocketRocket.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 894BA49A1F34626100D3D8B0 /* SocketRocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		895715C7235793CC0094E9C1 /* StatusIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 895715C6235793CC0094E9C1 /* StatusIcons.xcassets */; };
+		89749EA81F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow in Resources */ = {isa = PBXBuildFile; fileRef = 89749EA71F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow */; };
+		89749EAC1F35D2FB00734E0E /* applet in CopyFiles */ = {isa = PBXBuildFile; fileRef = 89749EA91F35D2D600734E0E /* applet */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		899C29131F3209010000396E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C29121F3209010000396E /* AppDelegate.m */; };
+		899C29161F3209010000396E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C29151F3209010000396E /* main.m */; };
+		899C29191F3209010000396E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C29181F3209010000396E /* ViewController.m */; };
+		899C292F1F32095E0000396E /* FinderSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C292E1F32095E0000396E /* FinderSync.m */; };
+		899C29331F32095E0000396E /* PvtboxFinderSync.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 899C29291F32095E0000396E /* PvtboxFinderSync.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		89B32EEF1F386C8700179FAF /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B32EEE1F386C8700179FAF /* folder.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8924888823B4CDED0055B5CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 899C29061F3209010000396E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8924887E23B4CDED0055B5CD;
+			remoteInfo = PvtboxShareExtension;
+		};
+		899C29311F32095E0000396E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 899C29061F3209010000396E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 899C29281F32095E0000396E;
+			remoteInfo = PvtboxFinderSync;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8924889123B5093A0055B5CD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8924889023B5093A0055B5CD /* SocketRocket.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894BA49C1F34677000D3D8B0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				894BA49D1F34677E00D3D8B0 /* SocketRocket.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89749EAB1F35D2F200734E0E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				89749EAC1F35D2FB00734E0E /* applet in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C29371F32095E0000396E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				899C29331F32095E0000396E /* PvtboxFinderSync.appex in Embed App Extensions */,
+				8924888A23B4CDED0055B5CD /* PvtboxShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8924887F23B4CDED0055B5CD /* PvtboxShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PvtboxShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8924888123B4CDED0055B5CD /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		8924888323B4CDED0055B5CD /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		8924888423B4CDED0055B5CD /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		8924888623B4CDED0055B5CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8924888723B4CDED0055B5CD /* PvtboxShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PvtboxShareExtension.entitlements; sourceTree = "<group>"; };
+		89438B281F36379C00701140 /* applet.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; path = applet.rsrc; sourceTree = "<group>"; };
+		894BA4561F32170400D3D8B0 /* default.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = default.iconset; path = Pvtbox/default.iconset; sourceTree = "<group>"; };
+		894BA49A1F34626100D3D8B0 /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocketRocket.framework; sourceTree = "<group>"; };
+		895715C6235793CC0094E9C1 /* StatusIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = StatusIcons.xcassets; sourceTree = "<group>"; };
+		89749EA71F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Copy to Pvtbox sync folder.workflow"; sourceTree = "<group>"; };
+		89749EA91F35D2D600734E0E /* applet */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = applet; sourceTree = "<group>"; };
+		89749EAD1F35D46600734E0E /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
+		899C290E1F3209010000396E /* Pvtbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pvtbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		899C29111F3209010000396E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		899C29121F3209010000396E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		899C29151F3209010000396E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		899C29171F3209010000396E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		899C29181F3209010000396E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		899C291A1F3209010000396E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		899C291D1F3209010000396E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		899C291F1F3209010000396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		899C29291F32095E0000396E /* PvtboxFinderSync.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PvtboxFinderSync.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		899C292C1F32095E0000396E /* PvtboxFinderSync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PvtboxFinderSync.entitlements; sourceTree = "<group>"; };
+		899C292D1F32095E0000396E /* FinderSync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinderSync.h; sourceTree = "<group>"; };
+		899C292E1F32095E0000396E /* FinderSync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinderSync.m; sourceTree = "<group>"; };
+		899C29301F32095E0000396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89B32EEE1F386C8700179FAF /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8924887C23B4CDED0055B5CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8924888F23B5093A0055B5CD /* SocketRocket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C290B1F3209010000396E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C29261F32095E0000396E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				894BA49B1F34626100D3D8B0 /* SocketRocket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8924888023B4CDED0055B5CD /* PvtboxShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8924888123B4CDED0055B5CD /* icon.icns */,
+				8924888323B4CDED0055B5CD /* ShareViewController.h */,
+				8924888423B4CDED0055B5CD /* ShareViewController.m */,
+				8924888623B4CDED0055B5CD /* Info.plist */,
+				8924888723B4CDED0055B5CD /* PvtboxShareExtension.entitlements */,
+			);
+			path = PvtboxShareExtension;
+			sourceTree = "<group>";
+		};
+		8924888E23B5093A0055B5CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		899C29051F3209010000396E = {
+			isa = PBXGroup;
+			children = (
+				89B32EEE1F386C8700179FAF /* folder.png */,
+				89438B281F36379C00701140 /* applet.rsrc */,
+				89749EAD1F35D46600734E0E /* Scripts */,
+				89749EA91F35D2D600734E0E /* applet */,
+				89749EA71F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow */,
+				899C29101F3209010000396E /* Pvtbox */,
+				899C292A1F32095E0000396E /* PvtboxFinderSync */,
+				8924888023B4CDED0055B5CD /* PvtboxShareExtension */,
+				899C290F1F3209010000396E /* Products */,
+				894BA4561F32170400D3D8B0 /* default.iconset */,
+				894BA49A1F34626100D3D8B0 /* SocketRocket.framework */,
+				8924888E23B5093A0055B5CD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		899C290F1F3209010000396E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				899C290E1F3209010000396E /* Pvtbox.app */,
+				899C29291F32095E0000396E /* PvtboxFinderSync.appex */,
+				8924887F23B4CDED0055B5CD /* PvtboxShareExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		899C29101F3209010000396E /* Pvtbox */ = {
+			isa = PBXGroup;
+			children = (
+				899C29111F3209010000396E /* AppDelegate.h */,
+				899C29121F3209010000396E /* AppDelegate.m */,
+				899C29171F3209010000396E /* ViewController.h */,
+				899C29181F3209010000396E /* ViewController.m */,
+				899C291A1F3209010000396E /* Assets.xcassets */,
+				899C291C1F3209010000396E /* Main.storyboard */,
+				899C291F1F3209010000396E /* Info.plist */,
+				899C29141F3209010000396E /* Supporting Files */,
+			);
+			path = Pvtbox;
+			sourceTree = "<group>";
+		};
+		899C29141F3209010000396E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				899C29151F3209010000396E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		899C292A1F32095E0000396E /* PvtboxFinderSync */ = {
+			isa = PBXGroup;
+			children = (
+				899C292D1F32095E0000396E /* FinderSync.h */,
+				899C292E1F32095E0000396E /* FinderSync.m */,
+				899C29301F32095E0000396E /* Info.plist */,
+				899C292B1F32095E0000396E /* Supporting Files */,
+				895715C6235793CC0094E9C1 /* StatusIcons.xcassets */,
+			);
+			path = PvtboxFinderSync;
+			sourceTree = "<group>";
+		};
+		899C292B1F32095E0000396E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				899C292C1F32095E0000396E /* PvtboxFinderSync.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8924887E23B4CDED0055B5CD /* PvtboxShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8924888D23B4CDED0055B5CD /* Build configuration list for PBXNativeTarget "PvtboxShareExtension" */;
+			buildPhases = (
+				8924887B23B4CDED0055B5CD /* Sources */,
+				8924887C23B4CDED0055B5CD /* Frameworks */,
+				8924887D23B4CDED0055B5CD /* Resources */,
+				8924889123B5093A0055B5CD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PvtboxShareExtension;
+			productName = PvtboxShareExtension;
+			productReference = 8924887F23B4CDED0055B5CD /* PvtboxShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		899C290D1F3209010000396E /* Pvtbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 899C29221F3209010000396E /* Build configuration list for PBXNativeTarget "Pvtbox" */;
+			buildPhases = (
+				899C290A1F3209010000396E /* Sources */,
+				899C290B1F3209010000396E /* Frameworks */,
+				899C290C1F3209010000396E /* Resources */,
+				899C29371F32095E0000396E /* Embed App Extensions */,
+				89749EAB1F35D2F200734E0E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				899C29321F32095E0000396E /* PBXTargetDependency */,
+				8924888923B4CDED0055B5CD /* PBXTargetDependency */,
+			);
+			name = Pvtbox;
+			productName = Pvtbox;
+			productReference = 899C290E1F3209010000396E /* Pvtbox.app */;
+			productType = "com.apple.product-type.application";
+		};
+		899C29281F32095E0000396E /* PvtboxFinderSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 899C29341F32095E0000396E /* Build configuration list for PBXNativeTarget "PvtboxFinderSync" */;
+			buildPhases = (
+				899C29251F32095E0000396E /* Sources */,
+				899C29261F32095E0000396E /* Frameworks */,
+				899C29271F32095E0000396E /* Resources */,
+				894BA49C1F34677000D3D8B0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PvtboxFinderSync;
+			productName = PvtboxFinderSync;
+			productReference = 899C29291F32095E0000396E /* PvtboxFinderSync.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		899C29061F3209010000396E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Pb Private Cloud Solutions Ltd";
+				TargetAttributes = {
+					8924887E23B4CDED0055B5CD = {
+						CreatedOnToolsVersion = 11.3;
+						DevelopmentTeam = 4WPMH89S8B;
+						ProvisioningStyle = Manual;
+					};
+					899C290D1F3209010000396E = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 4WPMH89S8B;
+						ProvisioningStyle = Manual;
+					};
+					899C29281F32095E0000396E = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 4WPMH89S8B;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 899C29091F3209010000396E /* Build configuration list for PBXProject "Pvtbox" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = 899C29051F3209010000396E;
+			productRefGroup = 899C290F1F3209010000396E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				899C290D1F3209010000396E /* Pvtbox */,
+				899C29281F32095E0000396E /* PvtboxFinderSync */,
+				8924887E23B4CDED0055B5CD /* PvtboxShareExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8924887D23B4CDED0055B5CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8924888223B4CDED0055B5CD /* icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C290C1F3209010000396E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89438B2B1F36387200701140 /* applet.rsrc in Resources */,
+				89438B2A1F36384B00701140 /* Scripts in Resources */,
+				89B32EEF1F386C8700179FAF /* folder.png in Resources */,
+				894BA4571F32170400D3D8B0 /* default.iconset in Resources */,
+				89749EA81F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C29271F32095E0000396E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				895715C7235793CC0094E9C1 /* StatusIcons.xcassets in Resources */,
+				894BA4581F32170400D3D8B0 /* default.iconset in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8924887B23B4CDED0055B5CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8924888523B4CDED0055B5CD /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C290A1F3209010000396E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				899C29191F3209010000396E /* ViewController.m in Sources */,
+				899C29161F3209010000396E /* main.m in Sources */,
+				899C29131F3209010000396E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899C29251F32095E0000396E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				899C292F1F32095E0000396E /* FinderSync.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8924888923B4CDED0055B5CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8924887E23B4CDED0055B5CD /* PvtboxShareExtension */;
+			targetProxy = 8924888823B4CDED0055B5CD /* PBXContainerItemProxy */;
+		};
+		899C29321F32095E0000396E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 899C29281F32095E0000396E /* PvtboxFinderSync */;
+			targetProxy = 899C29311F32095E0000396E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		899C291C1F3209010000396E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				899C291D1F3209010000396E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8924888B23B4CDED0055B5CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = PvtboxShareExtension/PvtboxShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4WPMH89S8B;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = PvtboxShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pvtbox.Pvtbox.PvtboxShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8924888C23B4CDED0055B5CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = PvtboxShareExtension/PvtboxShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4WPMH89S8B;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = PvtboxShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pvtbox.Pvtbox.PvtboxShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		899C29201F3209010000396E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		899C29211F3209010000396E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		899C29231F3209010000396E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4WPMH89S8B;
+				INFOPLIST_FILE = "$(SRCROOT)/Pvtbox/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pvtbox.Pvtbox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		899C29241F3209010000396E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4WPMH89S8B;
+				INFOPLIST_FILE = "$(SRCROOT)/Pvtbox/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pvtbox.Pvtbox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		899C29351F32095E0000396E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PvtboxFinderSync/PvtboxFinderSync.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4WPMH89S8B;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/PvtboxFinderSync/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pvtbox.Pvtbox.PvtboxFinderSync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		899C29361F32095E0000396E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PvtboxFinderSync/PvtboxFinderSync.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4WPMH89S8B;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/PvtboxFinderSync/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pvtbox.Pvtbox.PvtboxFinderSync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8924888D23B4CDED0055B5CD /* Build configuration list for PBXNativeTarget "PvtboxShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8924888B23B4CDED0055B5CD /* Debug */,
+				8924888C23B4CDED0055B5CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		899C29091F3209010000396E /* Build configuration list for PBXProject "Pvtbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899C29201F3209010000396E /* Debug */,
+				899C29211F3209010000396E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		899C29221F3209010000396E /* Build configuration list for PBXNativeTarget "Pvtbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899C29231F3209010000396E /* Debug */,
+				899C29241F3209010000396E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		899C29341F32095E0000396E /* Build configuration list for PBXNativeTarget "PvtboxFinderSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899C29351F32095E0000396E /* Debug */,
+				899C29361F32095E0000396E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 899C29061F3209010000396E /* Project object */;
+}
