@@ -59,13 +59,12 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>cmd="~/Applications/Pvtbox.app/Contents/Pvtbox.app/Contents/MacOS/Pvtbox"
+					<string>cmd="/Applications/Pvtbox.app/Contents/Pvtbox.app/Contents/MacOS/Pvtbox"
 for f in "$@"
 do
 	cmd="$cmd --copy \"$f\""
 done
 cmd="$cmd &gt; /dev/null 2&gt;&amp;1 &amp; disown \$!"
-echo $cmd
 eval $cmd</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -179,7 +178,7 @@ eval $cmd</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:485.000000</string>
+				<string>309.000000:305.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>

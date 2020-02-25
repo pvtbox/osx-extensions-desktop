@@ -157,11 +157,12 @@
     
     bool insideSync = target;
     
-    __block int sharedCount = 0;
+    __block bool containsShared = false;
     [items enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
         NSString* path = [[obj filePathURL] path];
         if([self.sharedPaths containsObject:path]) {
-            sharedCount += 1;
+            containsShared = true;
+            *stop = true;
         }
     }];
     
@@ -172,9 +173,21 @@
                 [menu addItem:[self goToFolderMenuItem]];
                 [menu addItem:[self showOnSiteMenuItem]];
             } else {
+                if (items.count == 1) {
+                    NSURL* url = [items[0] filePathURL];
+                    BOOL isDirectory = false;
+                    if ([[NSFileManager defaultManager]
+                         fileExistsAtPath:url.path
+                         isDirectory:&isDirectory] &&
+                        isDirectory &&
+                        [[url URLByDeletingLastPathComponent]
+                         isEqual:self.syncFolder]) {
+                        [menu addItem:[self getCollaborationSettingsItem]];
+                    }
+                }
                 [menu addItem:[self getLinkMenuItem]];
-                [menu addItem:[self mainLinkMenuItem]];
-                if (sharedCount == items.count) {
+                [menu addItem:[self mailLinkMenuItem]];
+                if (containsShared) {
                     [menu addItem:[self removeLinkMenuItem]];
                 }
                 [menu addItem:[self showOnSiteMenuItem]];
@@ -190,6 +203,7 @@
             } else {
                 [menu addItem:[self goToFolderMenuItem]];
             }
+            break;
         default:
             break;
     }
@@ -225,6 +239,15 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://pvtbox.net/"]];
 }
 
+- (NSMenuItem *)getCollaborationSettingsItem {
+    NSLog(@"getCollaborationSettingsItem");
+    NSMenuItem* item = [[NSMenuItem alloc] init];
+    [item setImage:self.icon];
+    [item setTitle:@"Collaboration settings"];
+    [item setAction:@selector(getCollaborationSettingsAction:)];
+    return item;
+}
+
 - (NSMenuItem *)getLinkMenuItem {
     NSLog(@"getLinkMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
@@ -232,6 +255,30 @@
     [item setTitle:@"Get link"];
     [item setAction:@selector(getLinkAction:)];
     return item;
+}
+
+- (IBAction)getCollaborationSettingsAction:(id)sender {
+    NSLog(@"getCollaborationSettingsAction");
+    if (!self.webSocket) return;
+    NSArray* items = [[FIFinderSyncController defaultController] selectedItemURLs];
+    if (!items) return;
+    
+    NSMutableArray<NSString*>* paths = [[NSMutableArray alloc] init];
+    [items enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString* path = [[obj filePathURL] path];
+        [paths addObject:path];
+    }];
+    
+    NSData* data = [NSJSONSerialization
+                    dataWithJSONObject:@{@"cmd" : @"collaboration_settings", @"paths" : paths}
+                    options:NSJSONWritingPrettyPrinted
+                    error:nil];
+    if (data) {
+        NSString* message = [[NSString alloc]
+                             initWithData:data
+                             encoding:NSUTF8StringEncoding];
+        [self.webSocket send:message];
+    }
 }
 
 - (IBAction)getLinkAction:(id)sender {
@@ -290,8 +337,8 @@
     }
 }
 
-- (NSMenuItem *)mainLinkMenuItem {
-    NSLog(@"mainLinkMenuItem");
+- (NSMenuItem *)mailLinkMenuItem {
+    NSLog(@"mailLinkMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
     [item setImage:self.icon];
     [item setTitle:@"Send link to E-mail"];
