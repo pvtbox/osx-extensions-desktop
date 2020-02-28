@@ -139,8 +139,8 @@
             NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
             formatter.dateFormat = @"YYYYMMdd_HHmm";
             NSString* dateStr = [formatter stringFromDate:date];
-            NSString* name = [[NSString alloc] initWithFormat:@"Screenshot_%@.jpg", dateStr];
-            NSString* dateTemplate = @"Screenshot_%@ %d.jpg";
+            NSString* name = [[NSString alloc] initWithFormat:@"Screenshot_%@.png", dateStr];
+            NSString* dateTemplate = @"Screenshot_%@ %d.png";
             int i = 0;
             while ([NSFileManager.defaultManager
                     fileExistsAtPath:[NSHomeDirectory()
@@ -148,15 +148,26 @@
                 i++;
                 name = [[NSString alloc] initWithFormat:dateTemplate, dateStr, i];
             }
+            
             NSData* data = [image
                             TIFFRepresentationUsingCompression:NSTIFFCompressionLZW
                             factor:0.5f];
             if (data != nil) {
-                [data
-                 writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:name]
-                 atomically:true];
-                NSLog(@"Saved image to %@", [NSHomeDirectory() stringByAppendingPathComponent:name]);
-                [self.paths addObject:[NSHomeDirectory() stringByAppendingPathComponent:name]];
+                NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithData:data];
+                if (bitmap != nil) {
+                    NSData* bitmapData = [bitmap
+                                          representationUsingType:NSBitmapImageFileTypePNG
+                                          properties:@{}];
+                    if (bitmapData != nil) {
+                        [bitmapData
+                         writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:name]
+                         atomically:true];
+                        NSLog(@"Saved image to %@", [NSHomeDirectory() stringByAppendingPathComponent:name]);
+                        [self.paths
+                         addObject:[NSHomeDirectory() stringByAppendingPathComponent:name]];
+                    }
+                }
+                
             }
         }
      
