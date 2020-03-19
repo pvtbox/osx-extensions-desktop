@@ -19,6 +19,7 @@
 		894BA49B1F34626100D3D8B0 /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BA49A1F34626100D3D8B0 /* SocketRocket.framework */; };
 		894BA49D1F34677E00D3D8B0 /* SocketRocket.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 894BA49A1F34626100D3D8B0 /* SocketRocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		895715C7235793CC0094E9C1 /* StatusIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 895715C6235793CC0094E9C1 /* StatusIcons.xcassets */; };
+		895AB96A2417D57E00B773F0 /* placeholder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 895AB9692417D57E00B773F0 /* placeholder.icns */; };
 		89749EA81F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow in Resources */ = {isa = PBXBuildFile; fileRef = 89749EA71F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow */; };
 		89749EAC1F35D2FB00734E0E /* applet in CopyFiles */ = {isa = PBXBuildFile; fileRef = 89749EA91F35D2D600734E0E /* applet */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		899C29131F3209010000396E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C29121F3209010000396E /* AppDelegate.m */; };
@@ -103,6 +104,7 @@
 		894BA4561F32170400D3D8B0 /* default.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = default.iconset; path = Pvtbox/default.iconset; sourceTree = "<group>"; };
 		894BA49A1F34626100D3D8B0 /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocketRocket.framework; sourceTree = "<group>"; };
 		895715C6235793CC0094E9C1 /* StatusIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = StatusIcons.xcassets; sourceTree = "<group>"; };
+		895AB9692417D57E00B773F0 /* placeholder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = placeholder.icns; sourceTree = "<group>"; };
 		89749EA71F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Copy to Pvtbox sync folder.workflow"; sourceTree = "<group>"; };
 		89749EA91F35D2D600734E0E /* applet */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = applet; sourceTree = "<group>"; };
 		89749EAD1F35D46600734E0E /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				89B32EEE1F386C8700179FAF /* folder.png */,
 				89438B281F36379C00701140 /* applet.rsrc */,
+				895AB9692417D57E00B773F0 /* placeholder.icns */,
 				89749EAD1F35D46600734E0E /* Scripts */,
 				89749EA91F35D2D600734E0E /* applet */,
 				89749EA71F35D2C200734E0E /* Copy to Pvtbox sync folder.workflow */,
@@ -360,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				895AB96A2417D57E00B773F0 /* placeholder.icns in Resources */,
 				89438B2B1F36387200701140 /* applet.rsrc in Resources */,
 				89438B2A1F36384B00701140 /* Scripts in Resources */,
 				89B32EEF1F386C8700179FAF /* folder.png in Resources */,

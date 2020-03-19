@@ -25,6 +25,21 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Pvtbox</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Pvtbox SmartSync+ file</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>net.pvtbox.SMARTFILE</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>applet</string>
 	<key>LSBackgroundOnly</key>
@@ -61,8 +76,30 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2019 PB Private Cloud Solutions Ltd. All rights reserved.</string>
+	<string>Copyright © 2020 PB Private Cloud Solutions Ltd. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Pvtbox SmartSync+ file</string>
+			<key>UTTypeIconFile</key>
+			<string>placeholder</string>
+			<key>UTTypeIdentifier</key>
+			<string>net.pvtbox.SMARTFILE</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>pvtbox</string>
+				<key>public.mime-type</key>
+				<string>application/octet-stream</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

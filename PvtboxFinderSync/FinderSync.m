@@ -24,10 +24,15 @@
 @interface FinderSync () <SRWebSocketDelegate>
 
 @property NSURL *syncFolder;
-@property NSSet *sharedPaths;
+@property NSMutableSet *sharedPaths;
+@property NSMutableSet *onlinePaths;
 @property NSString *appPath;
 @property NSImage *icon;
+@property NSImage *addToOfflineIcon;
+@property NSImage *removeFromOfflineIcon;
+@property NSImage *menuIcon;
 @property SRWebSocket *webSocket;
+@property bool smartSyncEnabled;
 
 @end
 
@@ -35,12 +40,18 @@
 
 - (instancetype)init {
     self = [super init];
+    self.sharedPaths = [[NSMutableSet alloc] init];
+    self.onlinePaths = [[NSMutableSet alloc] init];
+    self.smartSyncEnabled = false;
     self.appPath = [[[[[NSBundle mainBundle] bundlePath]
                       stringByDeletingLastPathComponent]
                      stringByDeletingLastPathComponent]
                     stringByDeletingLastPathComponent];
     
     self.icon = [[NSWorkspace sharedWorkspace] iconForFile:self.appPath];
+    self.addToOfflineIcon = [NSImage imageNamed:@"syncing"];
+    self.removeFromOfflineIcon = [NSImage imageNamed:@"online"];
+    self.menuIcon = [NSImage imageNamed:@"synced"];
     
     self.syncFolder = nil;
     [FIFinderSyncController defaultController].directoryURLs = nil;
@@ -65,6 +76,11 @@
      setBadgeImage:img
      label:@"error"
      forBadgeIdentifier:@"error"];
+    img = [NSImage imageNamed:@"online"];
+    [[FIFinderSyncController defaultController]
+     setBadgeImage:img
+     label:@"online"
+     forBadgeIdentifier:@"online"];
 
     [self connectToPvtboxApplication];
     
@@ -110,6 +126,7 @@
 - (void)endObservingDirectoryAtURL:(NSURL *)url {
     NSLog(@"endObservingDirectoryAtURL:%@", url.filePathURL);
     NSString* path = [[url filePathURL] path];
+    [self.onlinePaths removeObject:path];
     NSData* data = [NSJSONSerialization
                     dataWithJSONObject:@{@"cmd" : @"status_unsubscribe", @"path" : path}
                     options:NSJSONWritingPrettyPrinted
@@ -165,6 +182,19 @@
             *stop = true;
         }
     }];
+    __block bool containsOnline = false;
+    __block bool containsOffline = false;
+    [items enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString* path = [[obj filePathURL] path];
+        if([self.onlinePaths containsObject:path]) {
+            containsOnline = true;
+        } else {
+            containsOffline = true;
+        }
+        if (containsOnline && containsOffline) {
+            *stop = true;
+        }
+    }];
     
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Pvtbox"];
     switch (whichMenu) {
@@ -190,6 +220,13 @@
                 if (containsShared) {
                     [menu addItem:[self removeLinkMenuItem]];
                 }
+                if (self.smartSyncEnabled) {
+                    if (containsOnline && !containsOffline) {
+                        [menu addItem:[self addOfflineMenuItem]];
+                    } else if (containsOffline && !containsOnline) {
+                        [menu addItem:[self removeOfflineMenuItem]];
+                    }
+                }
                 [menu addItem:[self showOnSiteMenuItem]];
             }
             break;
@@ -213,7 +250,7 @@
 - (NSMenuItem *)goToFolderMenuItem {
     NSLog(@"goToFolderMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
-    [item setImage:self.icon];
+    [item setImage:self.menuIcon];
     [item setTitle:@"Go to Pvtbox secured sync folder"];
     [item setAction:@selector(openSyncFolderAction:)];
     return item;
@@ -228,7 +265,7 @@
 - (NSMenuItem *)showOnSiteMenuItem {
     NSLog(@"showOnSiteMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
-    [item setImage:self.icon];
+    [item setImage:self.menuIcon];
     [item setTitle:@"Show on site"];
     [item setAction:@selector(showOnSiteAction:)];
     return item;
@@ -242,16 +279,41 @@
 - (NSMenuItem *)getCollaborationSettingsItem {
     NSLog(@"getCollaborationSettingsItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
-    [item setImage:self.icon];
+    [item setImage:self.menuIcon];
     [item setTitle:@"Collaboration settings"];
     [item setAction:@selector(getCollaborationSettingsAction:)];
     return item;
 }
 
+- (IBAction)getCollaborationSettingsAction:(id)sender {
+    NSLog(@"getCollaborationSettingsAction");
+    if (!self.webSocket) return;
+    NSArray* items = [[FIFinderSyncController defaultController] selectedItemURLs];
+    if (!items) return;
+    
+    NSMutableArray<NSString*>* paths = [[NSMutableArray alloc] init];
+    [items enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString* path = [[obj filePathURL] path];
+        [paths addObject:path];
+    }];
+    
+    NSData* data = [NSJSONSerialization
+                    dataWithJSONObject:@{@"cmd" : @"collaboration_settings", @"paths" : paths}
+                    options:NSJSONWritingPrettyPrinted
+                    error:nil];
+    if (data) {
+        NSString* message = [[NSString alloc]
+                             initWithData:data
+                             encoding:NSUTF8StringEncoding];
+        [self.webSocket send:message];
+    }
+}
+
+
 - (NSMenuItem *)getLinkMenuItem {
     NSLog(@"getLinkMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
-    [item setImage:self.icon];
+    [item setImage:self.menuIcon];
     [item setTitle:@"Get link"];
     [item setAction:@selector(getLinkAction:)];
     return item;
@@ -308,7 +370,7 @@
 - (NSMenuItem *)removeLinkMenuItem {
     NSLog(@"removeLinkMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
-    [item setImage:self.icon];
+    [item setImage:self.menuIcon];
     [item setTitle:@"Remove link"];
     [item setAction:@selector(removeLinkAction:)];
     return item;
@@ -340,7 +402,7 @@
 - (NSMenuItem *)mailLinkMenuItem {
     NSLog(@"mailLinkMenuItem");
     NSMenuItem* item = [[NSMenuItem alloc] init];
-    [item setImage:self.icon];
+    [item setImage:self.menuIcon];
     [item setTitle:@"Send link to E-mail"];
     [item setAction:@selector(mailLinkAction:)];
     return item;
@@ -359,6 +421,70 @@
     }];
     NSData* data = [NSJSONSerialization
                     dataWithJSONObject:@{@"cmd" : @"email_link", @"paths" : paths}
+                    options:NSJSONWritingPrettyPrinted
+                    error:nil];
+    if (data) {
+        NSString* message = [[NSString alloc]
+                             initWithData:data
+                             encoding:NSUTF8StringEncoding];
+        [self.webSocket send:message];
+    }
+}
+
+- (NSMenuItem *)addOfflineMenuItem {
+    NSLog(@"addOfflineMenuItem");
+    NSMenuItem* item = [[NSMenuItem alloc] init];
+    [item setImage:self.addToOfflineIcon];
+    [item setTitle:@"Add to offline"];
+    [item setAction:@selector(addOfflineAction:)];
+    return item;
+}
+
+- (IBAction)addOfflineAction:(id)sender {
+    NSLog(@"addOfflineAction");
+    if (!self.webSocket) return;
+    NSArray* items = [[FIFinderSyncController defaultController] selectedItemURLs];
+    if (!items) return;
+    
+    NSMutableArray<NSString*>* paths = [[NSMutableArray alloc] init];
+    [items enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString* path = [[obj filePathURL] path];
+        [paths addObject:path];
+    }];
+    NSData* data = [NSJSONSerialization
+                    dataWithJSONObject:@{@"cmd" : @"offline_on", @"paths" : paths}
+                    options:NSJSONWritingPrettyPrinted
+                    error:nil];
+    if (data) {
+        NSString* message = [[NSString alloc]
+                             initWithData:data
+                             encoding:NSUTF8StringEncoding];
+        [self.webSocket send:message];
+    }
+}
+
+- (NSMenuItem *)removeOfflineMenuItem {
+    NSLog(@"removeOfflineMenuItem");
+    NSMenuItem* item = [[NSMenuItem alloc] init];
+    [item setImage:self.removeFromOfflineIcon];
+    [item setTitle:@"Remove from offline"];
+    [item setAction:@selector(removeOfflineAction:)];
+    return item;
+}
+
+- (IBAction)removeOfflineAction:(id)sender {
+    NSLog(@"removeOfflineAction");
+    if (!self.webSocket) return;
+    NSArray* items = [[FIFinderSyncController defaultController] selectedItemURLs];
+    if (!items) return;
+    
+    NSMutableArray<NSString*>* paths = [[NSMutableArray alloc] init];
+    [items enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString* path = [[obj filePathURL] path];
+        [paths addObject:path];
+    }];
+    NSData* data = [NSJSONSerialization
+                    dataWithJSONObject:@{@"cmd" : @"offline_off", @"paths" : paths}
                     options:NSJSONWritingPrettyPrinted
                     error:nil];
     if (data) {
@@ -409,18 +535,47 @@
             }
         } else if ([command isEqual:@"status"]) {
             NSString* status = message[@"status"];
-            NSSet* paths = message[@"paths"];
-            [paths enumerateObjectsUsingBlock:^(id  _Nonnull path, BOOL * _Nonnull stop) {
-                NSURL* url = [NSURL fileURLWithPath:path];
-                [[FIFinderSyncController defaultController]
-                 setBadgeIdentifier:status
-                 forURL:url];
-            }];
-        } else if ([command isEqual:@"shared"]) {
-            NSSet* paths = message[@"paths"];
-            if (paths) {
-                self.sharedPaths = paths;
+            NSSet* paths = [NSSet setWithArray:message[@"paths"]];
+            if (paths == nil) return;
+            if ([status isEqual:@"online"]) {
+                [paths enumerateObjectsUsingBlock:^(id  _Nonnull path, BOOL * _Nonnull stop) {
+                    NSURL* url = [NSURL fileURLWithPath:path];
+                    BOOL isDirectory = false;
+                    if ([[NSFileManager defaultManager]
+                         fileExistsAtPath:url.path
+                         isDirectory:&isDirectory] && isDirectory) {
+                        [[FIFinderSyncController defaultController]
+                        setBadgeIdentifier:status
+                        forURL:url];
+                    } else {
+                        [[FIFinderSyncController defaultController]
+                         setBadgeIdentifier:@""
+                         forURL:url];
+                    }
+                }];
+                if (paths.count > 0) {
+                    [self.onlinePaths unionSet:paths];
+                }
+            } else {
+                [paths enumerateObjectsUsingBlock:^(id  _Nonnull path, BOOL * _Nonnull stop) {
+                    NSURL* url = [NSURL fileURLWithPath:path];
+                    [[FIFinderSyncController defaultController]
+                     setBadgeIdentifier:status
+                     forURL:url];
+                }];
+                if (paths.count > 0) {
+                    [self.onlinePaths minusSet:paths];
+                }
             }
+        } else if ([command isEqual:@"shared"]) {
+            [self.sharedPaths removeAllObjects];
+            NSArray* paths = message[@"paths"];
+            if (paths && paths.count > 0) {
+                [self.sharedPaths addObjectsFromArray: paths];
+            }
+        } else if ([command isEqual:@"smart_sync"]) {
+            self.smartSyncEnabled = message[@"enabled"];
+            NSLog(@"Smart sync enabled: %@", self.smartSyncEnabled ? @"yes" : @"no");
         }
     }
 }
